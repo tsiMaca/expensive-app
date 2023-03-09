@@ -1,3 +1,10 @@
+# Git Commands
+
+git init - Create a new git repo
+git status - view the changes to your project code
+git add - Create a new commin with files from staging area
+git log view recent commits
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

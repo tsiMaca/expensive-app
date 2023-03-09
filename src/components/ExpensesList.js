@@ -1,10 +1,14 @@
-import React from 'react';
 import {useSelector, connect } from "react-redux";
 import ExpenseListItem from '../components/ExpenseListItem';
-import selectExpenses from './selectors/expenses'
+import selectExpenses from './selectors/expenses';
 
 const ExpensesList = (props) => {
-    const expenses = useSelector((state) => state.expenses);
+    const expenses = useSelector(state => state.expenses);
+
+ if (expenses.length === 0) {
+    return <div>No expenses </div>;
+  }
+ console.log(expenses)
     return (
         <div>
             <h1>Expense List</h1>

@@ -1,24 +1,26 @@
-import { Provider, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import './App.css';
 import Header from './components/Header/Header';
 import NavBar from './components/NavBar/NavBar';
 import RoutesApp from './router/AppRouter';
-import store from "./components/store/store";
+import { startSetExpense } from "./components/actions/expenses";
 
 function App() {
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(startSetExpense());
+  }, [dispatch]);
   return (
-    <Provider store={store}>
-      <div className="App">
-
-        <Header> {console.log("store",store)} </Header>
-        <NavBar/>
-        <div>
-          <RoutesApp/>      
-        </div>
+    <div className="App">
+      <Header> </Header>
+      <NavBar />
+      <div>
+        <RoutesApp />
       </div>
-    </Provider>
+    </div>
   );
 }
 
 export default App;
+
