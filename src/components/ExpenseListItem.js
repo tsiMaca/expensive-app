@@ -1,29 +1,24 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-import { connect } from 'react-redux';
-import { startRemoveExpense } from '../components/actions/expenses';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import moment from "moment";
+import numeral from "numeral";
 
-const ExpenseListItem = ({dispatch, id, description, amount, createdAt}) => {
-    const onRemove = () => {
-        dispatch(startRemoveExpense({ id }));
-       navigate('/');
-      };
-      const navigate = useNavigate;
-    
-    return (
+const ExpenseListItem = ({ dispatch, id, description, amount, createdAt }) => {
+  
+  return (
+      <Link className="list-item" to={`/edit/${id}`}>
         <div>
-            <Link to={`edit/${id}`}>
-            <h3>{description}</h3>
-            </Link>
-            <p>{amount} - {createdAt} </p>
-            <button onClick={onRemove}>;
-                 Remove </button>
+           <h3 className="list-item__title">{description}</h3>
+           <span className="list-item__subtitle">{moment(createdAt).format("MMMM Do, YYYY")}</span>
         </div>
-
-    );
+        
+        <h3 className="list-item__data">
+          {numeral(amount / 100).format("$0,0.00")}
+        
+        </h3>
+      </Link>
+  );
 };
 
-
-export default connect() (ExpenseListItem);
-
+export default connect()(ExpenseListItem);

@@ -6,22 +6,22 @@ const ExpensesList = (props) => {
     const expenses = useSelector(state => state.expenses);
 
  if (expenses.length === 0) {
-    return <div>No expenses </div>;
+    return <div className="list-item list-item--message">No expenses </div>;
   }
- console.log(expenses)
+ console.log('op2', expenses)
     return (
-        <div>
-            <h1>Expense List</h1>
-           {props.expenses.map((expense)=>{ return <ExpenseListItem key={expense.id} {...expense}/> })}
+        <div className="content-container">
+            <div className="list-header">
+                <div className="show-for-mobile"> Expenses</div>
+                <div className="show-for-desktop">Expense</div>
+                <div className="show-for-desktop">Amount</div>
+            </div>
+            {expenses.map((expense)=>{ return <ExpenseListItem key={expense.id} {...expense}/> })}
             
         </div>
     );
 
 };
-const mapStateToProps = (state) => {
-    return {
-        expenses:selectExpenses(state.expenses, state.filters)
-    }
-}
 
-export default connect(mapStateToProps) (ExpensesList);
+
+export default ExpensesList;
