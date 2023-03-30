@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "./components/actions/auth";
 import RoutesApp from "./router/AppRouter";
 import "normalize.css/normalize.css";
@@ -19,10 +19,12 @@ function App() {
         dispatch(startSetExpense());
         if (window.location.pathname === "/") {
           window.location.href = "/dashboard";
+          console.log("entro")
         }
       } else {
         navigate("/");
         dispatch(logout());
+        console.log("logout")
       }
     });
   }, []);

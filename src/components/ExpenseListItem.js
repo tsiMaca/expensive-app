@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 import moment from "moment";
 import numeral from "numeral";
 
@@ -21,4 +20,4 @@ const ExpenseListItem = ({ dispatch, id, description, amount, createdAt }) => {
   );
 };
 
-export default connect()(ExpenseListItem);
+export default (ExpenseListItem);
